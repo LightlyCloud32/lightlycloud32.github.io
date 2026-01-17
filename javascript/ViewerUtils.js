@@ -1,10 +1,10 @@
+import ParamsManager from './ParamsManager.js';
 /**サイトのユーティリティー*/
 class ViewerUtils {
-  /**@param {Document} doc ドキュメント*/
-  constructor(doc) {
-    /**@type {Document} ドキュメント*/
-    this.document = doc;
+  constructor() {
     this.domParser = new DOMParser();
+    /**URLパラメーター管理*/
+    this.paramsManager = ParamsManager;
   }
 
   //#region 取得系のユーティリティー
@@ -19,7 +19,7 @@ class ViewerUtils {
   //#endregion
   /**背景の色を設定する @param {string} color 色*/
   setBackgroundColor(color) {
-    this.document.body.style.backgroundColor = color;
+    document.body.style.backgroundColor = color;
   }
 
   /**サイトの内容に関する物を初期化する*/
@@ -28,4 +28,4 @@ class ViewerUtils {
   }
 }
 //外部に公開
-export default ViewerUtils;
+export default new ViewerUtils();
