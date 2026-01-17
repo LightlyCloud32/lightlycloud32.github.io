@@ -10,11 +10,20 @@
   <noscript>JavaScriptを有効化してください</noscript>
 </head>
 <body>
+  <p id="content"></p>
   <script type="module">
     import vu from './javascript/ViewerUtils.js';
-    vu.initialize();
-    //テスト
-    console.log(vu.domParse(await vu.fetch('./view.html')));
+    const prmgr = vu.paramsManager;
+    //ガバガバコード
+    //location.replace(prmgr.getParam('p'));
+    onload = async () => {
+      var link = `${location.origin}${location.pathname}pages/${prmgr.getParam('p')}`;
+      const content = vu.domParse(await vu.fetch(link));
+      console.log(content);
+      document.getElementById('content').append(content.body);
+      document.title = content.title;
+      vu.initialize();
+    };
   </script>
   <!--にゃー-->
 </body>
