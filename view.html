@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="ja-jp">
+<html lang="ja-jp" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  </script>
 </head>
 <body>
-    作るから待ってください(自分用)
+  <script type="module">
+    import vu from './ViewerUtils.js';
+    vu.initialize(document);
+    console.log(vu.domParse(await vu.fetch('./view.html')));
+  </script>
+  <!--作るから待ってください(自分用)-->
 </body>
 </html>
