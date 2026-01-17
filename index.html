@@ -17,8 +17,10 @@
     //ガバガバコード
     //location.replace(prmgr.getParam('p'));
     onload = async () => {
-      var link = `${location.origin}${location.pathname}pages/${prmgr.getParam('p')}`;
-      const content = vu.domParse(await vu.fetch(link));
+      const link = `${location.origin}${location.pathname}pages/${prmgr.getParam('p')}`;
+      var res = await vu.fetch(link);
+      if(`${res}`.includes('404')) res = '<h1>404 Not Found</h1>';
+      const dom = vu.domParse(res);
       console.log(content);
       document.getElementById('content').append(content.body);
       document.title = content.title;
