@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LightlyCloud32 Web">
+  <meta property="" content="">
+  <noscript>JavaScriptを有効化してください</noscript>
 </head>
 <body>
   <script type="module">
     import ViewerUtils from './ViewerUtils.js';
+    //初期化
     const vu = new ViewerUtils(document);
     vu.initialize();
+    //テスト
     console.log(vu.domParse(await vu.fetch('./view.html')));
   </script>
   <!--にゃー-->

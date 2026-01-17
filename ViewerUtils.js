@@ -7,7 +7,7 @@ class ViewerUtils {
     this.domParser = new DOMParser();
   }
 
-  //#region ユーティリティー
+  //#region 取得系のユーティリティー
   /**Webサーバーのコンテンツを取得する @param {string} url 取得先のURL*/
   async fetch(url) {
     return (await (await fetch(url)).text()).toString();
