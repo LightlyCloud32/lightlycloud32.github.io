@@ -21,9 +21,9 @@
       var res = await vu.fetch(link);
       if(`${res}`.includes('404')) res = '<h1>404 Not Found</h1>';
       const dom = vu.domParse(res);
-      console.log(content);
-      document.getElementById('content').append(content.body);
-      document.title = content.title;
+      console.log(dom);
+      document.getElementById('content').append(dom.body);
+      document.title = dom.title;
       vu.initialize();
     };
   </script>
