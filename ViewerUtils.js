@@ -1,12 +1,15 @@
 /**サイトのユーティリティー*/
 class ViewerUtils {
-  constructor() {
+  /**@param {Document} doc ドキュメント*/
+  constructor(doc) {
+    /**@type {Document} ドキュメント*/
+    this.document = doc;
     this.domParser = new DOMParser();
   }
 
-  /**初期化する @param {Document} doc ドキュメント*/
-  initialize(doc) {
-    doc.body.style.backgroundColor = '#90d490';
+  /**初期化する*/
+  initialize() {
+    this.document.body.style.backgroundColor = '#90d490';
   }
   /**Webサーバーのコンテンツを取得する @param {string} url 取得先のURL*/
   async fetch(url) {
@@ -18,5 +21,4 @@ class ViewerUtils {
   }
 }
 //外部に公開
-const viewerUtils = new ViewerUtils();
-export default viewerUtils;
+export default ViewerUtils;

@@ -8,8 +8,9 @@
 </head>
 <body>
   <script type="module">
-    import vu from './ViewerUtils.js';
-    vu.initialize(document);
+    import ViewerUtils from './ViewerUtils.js';
+    const vu = new ViewerUtils(document);
+    vu.initialize();
     console.log(vu.domParse(await vu.fetch('./view.html')));
   </script>
   <!--作るから待ってください(自分用)-->
