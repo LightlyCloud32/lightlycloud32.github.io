@@ -7,6 +7,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="LightlyCloud32 Web">
   <meta property="" content="">
+  <link rel="stylesheet" href="./style.css">
   <noscript>JavaScriptを有効化してください</noscript>
 </head>
 <body>
@@ -15,11 +16,10 @@
     import vu from './javascript/ViewerUtils.js';
     const prmgr = vu.paramsManager;
     //ガバガバコード
-    //location.replace(prmgr.getParam('p'));
     onload = async () => {
       const link = `${location.origin}${location.pathname}pages/${prmgr.getParam('p')}`;
       var res = await vu.fetch(link);
-      if(`${res}`.includes('404')) res = '<h1>404 Not Found</h1>';
+      if(`${res}`.includes('404')) res = '<h1 id="ErrorNotFound">404 Not Found</h1>';
       const dom = vu.domParse(res);
       console.log(dom);
       document.getElementById('content').append(dom.body);
