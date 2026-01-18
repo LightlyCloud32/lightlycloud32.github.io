@@ -20,7 +20,7 @@
       //const link = `${location.origin}${location.pathname}pages/${prmgr.getParam('p')}`;
       //var res = await vu.fetch(link);
       //if(`${res}`.includes('404')) res = '<h1 id="ErrorNotFound">404 Not Found</h1>';
-      var res = await vu.fetchFile('page')
+      var res = await vu.fetchFile('pages')
       const dom = vu.domParse(res);
       console.log(dom);
       document.getElementById('content').append(dom.body);
