@@ -17,8 +17,8 @@ class ViewerUtils {
     const param = this.paramsManager.getParam('f'); //ファイルパラメーターの取得
     const url = `${location.origin}${location.pathname}${path}/${param}`;
     var f = await this.fetch(url);
-    //エラー処理
-    if(!param) f = '<h1>Null</h1>';
+    //エラー処理(意味的に当てはまるエラーメッセージ)
+    if(!param) f = '<h1>400 Bad Request</h1>';
     if(f.includes('404')) f = '<h1>404 Not Found</h1>';
     return f;
   }
