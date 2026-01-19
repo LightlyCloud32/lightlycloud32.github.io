@@ -5,7 +5,9 @@ class Net {
   }
   /**ファイルを取得する @param {string} path ディレクトリ @param {string | null} param パラメーター*/
   async fetchFile(path, param) {
-    const url = `${location.origin}${location.pathname}${path}/${param}`;
+    var p = param;
+    if(p === '') p = 'index';
+    const url = `${location.origin}${location.pathname}${path}/${p}`;
     var f = await this.fetch(url);
     //エラー処理
     if(!param && param !== '') f = '<h1 id="Error">Bad Request</h1>';
