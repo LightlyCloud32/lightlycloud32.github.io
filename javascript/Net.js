@@ -8,7 +8,7 @@ class Net {
     const url = `${location.origin}${location.pathname}${path}/${param}`;
     var f = await this.fetch(url);
     //エラー処理
-    if(!param) f = '<h1 id="Error">Bad Request</h1>';
+    if(!param && param !== '') f = '<h1 id="Error">Bad Request</h1>';
     if(f.includes('404')) f = '<h1 id="Error">Not Found</h1>';
     return f;
   }
