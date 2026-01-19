@@ -17,12 +17,7 @@
     const prmgr = vu.paramsManager;
     //ガバガバコード
     onload = async () => {
-      var res = await vu.net.fetchFile('pages', prmgr.getParam('f'));
-      const dom = vu.domParse(res);
-      console.log(dom);
-      document.getElementById('content').append(dom.body);
-      document.title = `${dom.title} - Viewer`;
-      vu.initialize();
+      vu.redirect('pages', { file: prmgr.getParam('f') });
     };
   </script>
   <!--にゃー-->

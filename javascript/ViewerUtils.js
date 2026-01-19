@@ -24,6 +24,17 @@ class ViewerUtils {
   initialize() {
     this.setBackgroundColor('#90d490');
   }
+  /**
+   * @param {string} path ディレクトリ
+   * @param {{file: string}} params パラメーターの値
+  */
+  async redirect(path, params) {
+    const f = await this.net.fetchFile(path, params.file);
+    const dom = this.domParse(f);
+    document.getElementById('content').append(dom.body);
+    document.title = `${dom.title} - Viewer`;
+    this.initialize();
+  }
 }
 //外部に公開
 export default new ViewerUtils();

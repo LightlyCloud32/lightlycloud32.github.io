@@ -7,6 +7,7 @@ class Net {
   async fetchFile(path, param) {
     var p = param;
     if(p === '') p = 'index';
+    console.log(`P: ${p}`);
     const url = `${location.origin}${location.pathname}${path}/${p}`;
     var f = await this.fetch(url);
     //エラー処理
