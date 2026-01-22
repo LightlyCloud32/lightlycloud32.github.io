@@ -32,7 +32,7 @@ class ViewerUtils {
     var f = await this.net.fetchFile(path, `${params.file}.html`);
     const dom = this.domParse(f);
     document.getElementById('content').append(dom.body);
-    document.title = `${dom.title} - Viewer`;
+    document.title = `${dom.title}`;
     this.initialize();
   }
 }
