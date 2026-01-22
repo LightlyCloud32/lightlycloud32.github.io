@@ -9,10 +9,16 @@ class Net {
     if(p === '') p = 'index';
     console.log(`P: ${p}`);
     const url = `${location.origin}${location.pathname}${path}/${p}`;
-    var f = await this.fetch(url);
-    //エラー処理
-    if(!param && param !== '') f = '<h1 id="Error">Bad Request</h1>';
-    if(f.includes('404')) f = '<h1 id="Error">Not Found</h1>';
+    var f = '';
+    try {
+      f = await this.fetch(url);
+      //エラー処理
+      if(!param && param !== '') f = '<h1 id="Error">Bad Request</h1>';
+      if(f.includes('404')) f = '<h1 id="Error">Not Found</h1>';
+    } catch {
+      f = '<h1 id="Error">Fetch Error</h1>'
+    }
+    if(f.includes('Error')) console.error(`Error: ${f}`);
     return f;
   }
 }

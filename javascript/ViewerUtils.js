@@ -29,7 +29,7 @@ class ViewerUtils {
    * @param {{file: string}} params パラメーターの値
   */
   async redirect(path, params) {
-    const f = await this.net.fetchFile(path, params.file);
+    var f = await this.net.fetchFile(path, `${params.file}.html`);
     const dom = this.domParse(f);
     document.getElementById('content').append(dom.body);
     document.title = `${dom.title} - Viewer`;
