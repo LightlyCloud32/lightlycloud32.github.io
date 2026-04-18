@@ -1,7 +1,15 @@
 /* CSSに慣れてません */
 
-#warning {
+.info {
+  -webkit-text-fill-color: rgb(10, 240, 240);
+  -webkit-text-stroke: 0.5px;
+}
+.warning {
   -webkit-text-fill-color: rgb(255, 230, 0);
-  -webkit-text-stroke-color: rgb(255, 208, 0);
-  -webkit-text-stroke: 1px;
+  -webkit-text-stroke: 0.25px;
+}
+
+.danger {
+  -webkit-text-fill-color: rgb(245, 96, 9);
+  -webkit-text-stroke: 0.25px;
 }
