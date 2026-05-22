@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbowarpの拡張機能の追加と置き換えツール</title>
+</head>
+<body>
+    <script type="module">
+        //(息抜き)
+        //自分なりの書き方なので遅かったりするかも
+        //https://qiita.com/i15fujimura1s/items/6fa5d16b1e53f04f3b06のコメント欄
+        const base64EncodeUtf8 = (string) => {
+          return btoa([...new TextEncoder().encode(string)].map((b) => String.fromCharCode(b)).join(''));
+        }
+
+        const extensionContent = (content) => `data:text/javascript;base64,${base64EncodeUtf8(content)}`;
+
+        const addExtension = (projectJson = {}, extension = '', id = '') => {
+
+          projectJson['extensions'].push(id);
+          projectJson['extensionURLs'][id] = extensionContent(extension);
+          return projectJson;
+        }
+        const replaceExtension = (projectJson = {}, extension = '', id = '', replaceId = '') => {
+          const info = eval(extension).getInfo();
+          var extensions = projectJson['extensions'];
+
+          const index = extensions.findIndex(val => val === replaceId);
+          extensions[index] = id;
+          projectJson['extensionURLs'][id] = extensionContent(extension);
+          return projectJson;
+        }
+        globalThis.addExtension = addExtension;
+        globalThis.replaceExtension = replaceExtension;
+    </script>
+    <script>
+        onload = () => {
+          const addProjElem = document.getElementById('addProjectJson');
+          const addExtIdElem = document.getElementById('addExtensionId');
+          const addExtContElem = document.getElementById('addExtensionContent');
+          const addExecElem = document.getElementById('addExecute');
+          const addResElem = document.getElementById('addResult');
+
+          addExecElem.addEventListener('click', () => {
+            const projectJson = JSON.parse(addProjElem.value);
+            const extCont = addExtContElem.value;
+            addResElem.value = JSON.stringify(globalThis.addExtension(
+              JSON.parse(addProjElem.value),
+              addExtContElem.value,
+              addExtIdElem.value
+            ));
+          });
+        }
+    </script>
+
+    <label for="addProjectJson">project.json:</label><br>
+    <input type="text" id="addProjectJson" minlength="2" max="9999999999" size="32"><br>
+    <label for="addExtension">拡張機能のID:</label><br>
+    <input type="text" id="addExtensionId" minlength="2" max="9999" size="32"><br>
+    <label for="addExtension">拡張機能の内容:</label><br>
+    <input type="text" id="addExtensionContent" minlength="2" max="9999999999" size="32"><br>
+    <br>
+    <input id="addExecute" type="button" value="実行"><br>
+    <label for="addResult">結果:</label><br>
+    <input type="text" id="addResult" minlength="2" max="9999999999" size="32">
+</body>
+</html>
