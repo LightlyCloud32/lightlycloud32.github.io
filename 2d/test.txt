@@ -1,0 +1,13 @@
+mx = left
+px = rigth
+my = bottom
+py = top
+mz = rear
+pz = front
+
+head = #ff0000
+body = #ffff00
+arm_left = #00ff00
+arm_right = #00ffff
+leg_left = #0000ff
+leg_right = #ff00ff
