@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Fetch</title>
+</head>
+<body>
+    <input type="text" id="url" placeholder="URL">
+    <br>
+    <button id="submit">Submit</button>
+    <br>
+
+    <div id="content"></div>
+    
+    <script>
+        const urlField = document.getElementById('url');
+        const submitButton = document.getElementById('submit');
+        const contentDiv = document.getElementById('content');
+        
+        var url = '';
+
+        submitButton.addEventListener('click', async () => {
+          console.log('送信がクリックされました');
+
+          const url = urlField.value;
+
+          console.log(`URL: ${url}`);
+
+          const fetchData = await fetch(url);
+          const contentData = await fetchData.text();
+          
+          console.log(`内容の長さ: ${contentData.length}`);
+
+          contentDiv.textContent = contentData;
+        });
+    </script>
+</body>
+</html>
